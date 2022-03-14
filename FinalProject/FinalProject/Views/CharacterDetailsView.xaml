@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Character Details"
+             BackgroundColor="#080808"
+             x:Class="FinalProject.Views.CharacterDetailsView">
+    <ContentPage.Content>
+        <StackLayout Margin="15">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="48"/>
+                    <RowDefinition Height="48"/>
+                    <RowDefinition Height="48"/>
+                    <RowDefinition Height="48"/>
+                    <RowDefinition Height="48"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image 
+                    Grid.Row="0"
+                    Grid.RowSpan="4"
+                    Grid.Column="0"
+                Source="{Binding SelectedCharacter.img}"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Aspect="AspectFill"/>
+
+                <Label 
+                    Grid.Row="0"
+                    Grid.Column="1"
+                Text="{Binding SelectedCharacter.name}"
+                HorizontalOptions="Center"
+                TextColor="#cccccc"
+                FontSize="Medium"/>
+
+                <Label 
+                    Grid.Row="1"
+                    Grid.Column="1"
+                Text="{Binding SelectedCharacter.nickname}"
+                HorizontalOptions="Center"
+                TextColor="#cccccc"
+                FontSize="Medium"/>
+
+                <Label 
+                    Grid.Row="2"
+                    Grid.Column="1"
+                Text="{Binding SelectedCharacter.birthday}"
+                HorizontalOptions="Center"
+                TextColor="#cccccc"
+                FontSize="Medium"/>
+
+                <Label 
+                    Grid.Row="3"
+                    Grid.Column="1"
+                Text="{Binding SelectedCharacter.status}"
+                HorizontalOptions="Center"
+                TextColor="#cccccc"
+                FontSize="Medium"/>
+
+                <Label 
+                    Grid.Row="4"
+                    Grid.Column="1"
+                Text="{Binding SelectedCharacter.portrayed}"
+                HorizontalOptions="Center"
+                TextColor="#cccccc"
+                FontSize="Medium"/>
+
+            </Grid>
+
+            <!--<Button Text="share"
+                    Command="{Binding ShareCommand}"
+                    FontSize="Medium"/>
+            <Image 
+                Source="{Binding SelectedCharacter.img}"
+                HorizontalOptions="Center"
+                Aspect="AspectFill"/>
+
+            <Label 
+                Text="{Binding SelectedCharacter.name}"
+                HorizontalOptions="Center"
+                TextColor="#cccccc"
+                FontSize="Medium"/>
+
+            <Label 
+                Text="{Binding SelectedCharacter.nickname}"
+                HorizontalOptions="Center"
+                TextColor="#cccccc"
+                FontSize="Medium"/>
+
+            <Label 
+                Text="{Binding SelectedCharacter.birthday}"
+                HorizontalOptions="Center"
+                TextColor="#cccccc"
+                FontSize="Medium"/>-->
+
+            <Label Text="Occupations:"
+                   TextColor="#cccccc"
+                   FontSize="Medium"/>
+
+            <CollectionView ItemsSource="{Binding occupations}">
+
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical"                                          
+                           ItemSpacing="10" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate >
+                    <DataTemplate>
+                        <Grid RowSpacing="10">
+                            <Label Text="{Binding .}"
+                                   TextColor="#cccccc"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                
+            </CollectionView>
+
+            <Label Text="Seasons appeared in:"
+                   TextColor="#cccccc"
+                   FontSize="Medium"/>
+
+            <CollectionView ItemsSource="{Binding appearances}">
+
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal"                                          
+                           ItemSpacing="10" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate >
+                    <DataTemplate>
+                        <Grid RowSpacing="10">
+                            <Label Text="{Binding .}"
+                                   TextColor="#cccccc"
+                                   HorizontalOptions="Center"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Row="0"
+                        Grid.Column="0"
+                    Text="share"
+                    Command="{Binding ShareCommand}"
+                    FontSize="Medium"/>
+
+                <Button Grid.Row="0"
+                        Grid.Column="1"
+                    Text="add to fav"
+                    Command="{Binding SaveCommand}"
+                    FontSize="Medium"/>
+
+            </Grid>
+            
+            
+
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

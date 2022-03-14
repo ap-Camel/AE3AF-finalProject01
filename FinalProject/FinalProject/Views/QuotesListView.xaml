@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Quotes"
+             BackgroundColor="#080808"
+             x:Class="FinalProject.Views.QuotesListView">
+
+    <StackLayout Margin="15">
+        <CollectionView ItemsSource="{Binding quotes}">
+
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical"
+                           ItemSpacing="20" />
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid RowSpacing="4" BackgroundColor="#232323" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+
+                        <Label Grid.Row="0"
+                               Grid.Column="0"
+                               Grid.ColumnSpan="4"
+                               Text="{Binding quote}"
+                               TextColor="#cccccc"
+                               VerticalOptions="Center"
+                               FontAttributes="Italic"
+                               Margin="5"
+                               FontSize="Medium"/>
+
+                        <Label Grid.Row="1"
+                                   Grid.Column="0"
+                                   Text="-"
+                               TextColor="#cccccc"
+                                   HorizontalOptions="End"
+                                   VerticalOptions="Start"
+                                   FontSize="Medium"/>
+
+                        <Label Grid.Row="1"
+                                   Grid.Column="1"
+                                   Grid.ColumnSpan="2"
+                                   Text="{Binding author}"
+                               TextColor="#cccccc"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Start"
+                                   FontSize="Medium"/>
+
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>

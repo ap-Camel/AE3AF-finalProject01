@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Details"
+             BackgroundColor="#080808"
+             x:Class="FinalProject.Views.EpisodeDetailsView">
+    <ContentPage.Content>
+        <StackLayout Margin="15">
+
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0"
+                   Grid.Column="0"
+                   Text="Episode:"
+                   FontSize="Medium"
+                   TextColor="#cccccc"/>
+
+                <Label Grid.Row="1"
+                   Grid.Column="0"
+                   Text="Season:"
+                   FontSize="Medium"
+                   TextColor="#cccccc"/>
+
+                <Label Grid.Row="2"
+                   Grid.Column="0"
+                   Text="Titel:"
+                   FontSize="Medium"
+                   TextColor="#cccccc"/>
+
+                <Label Grid.Row="3"
+                   Grid.Column="0"
+                   Text="AirDate:"
+                   FontSize="Medium"
+                   TextColor="#cccccc"/>
+
+                <Label 
+                Grid.Row="0"
+                Grid.Column="1"
+                Text="{Binding SelectedEpisode.episode}"
+                TextColor="#cccccc"
+                FontSize="Medium"/>
+
+                <Label 
+                Grid.Row="1"
+                Grid.Column="1"
+                Text="{Binding SelectedEpisode.season}"
+                TextColor="#cccccc"
+                FontSize="Medium"/>
+
+                <Label 
+                Grid.Row="2"
+                Grid.Column="1"
+                Text="{Binding SelectedEpisode.title}"
+                TextColor="#cccccc"
+                FontSize="Medium"/>
+
+                <Label 
+                Grid.Row="3"
+                Grid.Column="1"
+                Text="{Binding SelectedEpisode.air_date}"
+                TextColor="#cccccc"
+                FontSize="Medium"/>
+
+            </Grid>
+
+            <Label Text="Characters: "
+                   FontSize="Medium"
+                   TextColor="#cccccc"/>
+
+            <CollectionView ItemsSource="{Binding characters}">
+
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"
+                                     HorizontalItemSpacing="10"
+                                     VerticalItemSpacing="10"
+                        Span="2" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate >
+                    <DataTemplate>
+                        <Grid RowSpacing="10">
+                            <Label Text="{Binding .}"
+                                   TextColor="#cccccc"
+                                   HorizontalOptions="Center"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Row="0"
+                        Grid.Column="0"
+                    Text="share"
+                    FontSize="Medium"
+                    Command="{Binding ShareCommand}"/>
+
+                <Button Grid.Row="0"
+                        Grid.Column="1"
+                    Text="add to favs"
+                    FontSize="Medium"
+                    Command="{Binding SaveCommand}"/>
+
+            </Grid>
+
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

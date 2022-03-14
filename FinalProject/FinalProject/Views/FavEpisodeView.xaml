@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Favourite Episodes"
+             BackgroundColor="#080808"
+             x:Class="FinalProject.Views.FavEpisodeView">
+    <ContentPage.Resources>
+        <Style TargetType="Grid">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="#222222" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout Margin="15">
+
+            <CollectionView ItemsSource="{Binding favEpisodes}"
+                            SelectedItem="{Binding SelectedEpisode}"
+                            SelectionMode="Single">
+
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"
+                                     HorizontalItemSpacing="7"
+                                     VerticalItemSpacing="7"
+                        Span="2" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid RowSpacing="10" Background="#101010">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+
+                            <Image Grid.Row="0"
+                                   Grid.Column="0"
+                                   Margin="5"
+                                   Source="{Binding imgUrl}"
+                                   VerticalOptions="Center"
+                                   Aspect="AspectFill"/>
+                            
+                            
+                            
+                            <Label Grid.Row="1"
+                                   Grid.Column="0"
+                                   Text="{Binding title}"
+                                   TextColor="#cccccc"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="End"
+                                   FontSize="Small"/>
+
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Button Text="Delete Selected"
+                    TextColor="#232323"
+                    FontSize="Medium"
+                    Command="{Binding DeleteCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
